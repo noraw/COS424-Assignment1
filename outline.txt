@@ -1,0 +1,19 @@
+features given
+  word counts.
+
+additional features
+  bigrams - word pairs (1) - Ruth
+  sender, email address IP address (sender's top level domain (ending)) (4) - Nora
+  length (2) - Nora
+  punctuation (5) - Ruth
+  URL - file type & count (3) - Nora
+
+feature selection
+  low variance
+
+classifiers
+  naive bayes - Ruth
+  SVM
+  nearest-neighbor - Nora
+
+  
