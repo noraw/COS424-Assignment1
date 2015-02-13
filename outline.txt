@@ -11,7 +11,7 @@ additional features
 feature selection
   low variance
 
-classifiers
+classifiers: http://scikit-learn.org/stable/
   naive bayes - Ruth
   SVM
   nearest-neighbor - Nora
