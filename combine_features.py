@@ -29,13 +29,13 @@ def main(argv):
     try:
       opts, args = getopt.getopt(argv,"p:n:m:e", ["path=", "feature_names=", "feature_matrix=", "number_of_emails="])
     except getopt.GetoptError:
-      print 'ERROR:   python combine_features.py -p <path> -n <inputfileslist> -m <inputfileslist> -e <numberOfEmails>'
+      print "ERROR:   python combine_features.py -p <path> -n '<inputfileslist>' -m '<inputfileslist>' -e <numberOfEmails>"
       sys.exit(2)
 
     numEmails = int(args[0])
     for opt, arg in opts:
       if opt == '-h':
-         print 'HELP:   combine_features.py -p <path> -n <inputfileslist> -m <inputfileslist> -e <numberOfEmails>'
+         print "HELP:   combine_features.py -p <path> -n '<inputfileslist>' -m '<inputfileslist>' -e <numberOfEmails>"
          sys.exit()
       elif opt in ("-p", "--path"):
          path = arg
@@ -47,6 +47,7 @@ def main(argv):
 
     namesFilesList = namesFiles.split(" ");
     matrixFilesList = matrixFiles.split(" ");
+    print "\n"
     print namesFilesList
     print matrixFilesList
     print numEmails
@@ -67,16 +68,11 @@ def main(argv):
 
 
 
-    outfile= codecs.open(path+"/"+"combine_features_nameArray.txt", 'w',"utf-8-sig")
+    outfile= codecs.open(path+"/combine_features_nameArray.txt", 'w',"utf-8-sig")
     outfile.write("\n".join(featureArray))
     outfile.close()
     #write to binary file for large data set
-    featureMatrix.tofile(path+"/"+"combine_features_matrix_.dat")
-
-
-
-
-
+    featureMatrix.tofile(path+"/combine_features_matrix_.dat")
 
 
 
