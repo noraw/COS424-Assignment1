@@ -1,0 +1,71 @@
+From @..  Sun Jan 18 05:26:27 2015
+Return-Path: <@..>
+X-Original-To: zbn@fs.net
+Delivered-To: @..
+Received: by .. (, from userid 0)
+	id 77AE4DE; Sun, 18 Jan 2015 05:26:27 +0000 (UTC)
+Received: from stcceg-momta01-cwmx.mycingular.net (stcceg-momta01-cwmx.mycingular.net [209.183.32.140])
+    by .. with SMTP id s7c5dwkjhpzcvykp7uahnhkmv2;
+    for zbn@fs.net;
+    Sun, 18 Jan 2015 05:26:27 +0000 (UTC)
+    (envelope-from <>)
+Received-: Pass; receiver=..;
+    client-ip=209.183.32.140; envelope-from=<>;
+    =stcceg-momta01-cwmx.mycingular.net
+X-: version=0.8.3; receiver=..;
+    client-ip=209.183.32.140; client-port=46910;
+    syn-=:49:1:52:,N,W0,N,N,S; network-=16;
+    network-path=143.215.250.65 130.207.254.29 130.207.254.186 65.114.55.137
+    67.14.14.138 192.205.37.165 12.122.141.190 12.122.2.6 12.122.28.74
+    12.122.2.205 12.123.159.17 12.90.96.26 0.0.0.0 0.0.0.0 0.0.0.0
+    209.183.32.140; network-path-time=1421558787
+Received: from [209.183.32.23] ([209.183.32.23:46838] =stcceg-mtmta03)
+	by stcceg-momta01 (envelope-from <>)
+	(ecelerity 3.0.23.37692 r(37717)) with ESMTP
+	id 08/C8-07757-3F34BB45; Sat, 17 Jan 2015 23:26:11 -0600
+Date: Sat, 17 Jan 2015 23:26:11 -0600
+Message-ID: <08.C8.07757.3F34BB45@stcceg-momta01>
+From: @..
+To: @..
+Subject: Unable to deliver message.
+MIME-Version: 1.0
+Content-Type: multipart/report; boundary="------------I305M09060309060P_003014215587710"
+
+This is a multi-part message in MIME format.
+
+--------------I305M09060309060P_003014215587710
+Content-Type: text/plain; charset=-8;
+Content-Transfer-Encoding: 8bit
+
+
+
+The following recipient(s) cannot be reached: 9042382913@txt.att.net The message cannot be delivered due to a configuration error on the server. Please contact your Administrator.
+
+
+--------------I305M09060309060P_003014215587710
+Content-Type: message/rfc822; Content-Transfer-Encoding: 8bit
+Content-Disposition: attachment
+
+
+X-Cloudmark-Analysis: v=2.1 cv=GaqZnGnL c=1 sm=1 tr=0
+ a=DFQohOjvG56q/cpfBC5N0Q==:117 a=DFQohOjvG56q/cpfBC5N0Q==:17 a=4HzhQUzmAAAA:8
+ a=FWdGjJ7kAAAA:20 a=rnqaLb3URUdRGQBki1sA:9 a=_b81lAF-OWYA:10
+ a=4HFmYmVyvRMA:10 a=ddZT45GQ4RAA:10 a=nJfPiJvnZlMA:10 a=seoMPcc7U5AA:10
+ a=EVUyri_ow3YA:10 a=05MsrlhNmJgA:10 a=9Lq3UTeBgPMA:10
+MIME-Version: 1.0
+Date: Sun, 18 Jan 2015 06:27:15 +0100
+X-Priority: 3 (Normal)
+Message-ID: <14215588350.DBDC86FCD.12842@12502c18b>
+Subject: rapport;
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+From: zbn@fs.net
+To: "9042382913" <9042382913@txt.att.net>
+
+=Samantha said you could be able to look it -  http://goo.gl/mB9zeX#BIRCH=
+=2E=
+
+
+--------------I305M09060309060P_003014215587710--
+
+

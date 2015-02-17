@@ -1,0 +1,42 @@
+Message-ID: <28509298.1075841310452.JavaMail.@thyme>
+Date: Tue, 8 Jan 2002 00:36:38 -0800 (PST)
+From: pete.davis@.com
+To: pete.davis@.com
+Subject: Start Date: 1/8/02; HourAhead hour: 3;
+Cc: albert.meyers@.com, bill.williams@.com, craig.dean@.com, 
+	geir.solberg@.com, john.anderson@.com, 
+	mark.guzman@.com, michael.mier@.com, pete.davis@.com, 
+	ryan.slinger@.com
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Traer-Encoding: 7bit
+: albert.meyers@.com, bill.williams@.com, craig.dean@.com, 
+	geir.solberg@.com, john.anderson@.com, 
+	mark.guzman@.com, michael.mier@.com, pete.davis@.com, 
+	ryan.slinger@.com
+X-From: Davis, Pete </O=/OU=NA/CN=/CN=PDAVIS1>
+X-To: Davis, Pete </O=/OU=NA/CN=/CN=PDAVIS1>
+X-cc: Meyers, Albert </O=/OU=NA/CN=/CN=BMEYERS>, Williams III, Bill </O=/OU=NA/CN=/CN=BWILLIA5>, Dean, Craig </O=/OU=NA/CN=/CN=CDEAN2>, Solberg, Geir </O=/OU=NA/CN=/CN=GSOLBER>, Anderson, John </O=/OU=NA/CN=/CN=JANDERS3>, Guzman, Mark </O=/OU=NA/CN=/CN=MGUZMAN3>, Mier, Michael </O=/OU=NA/CN=/CN=MMIER>, Davis, Pete </O=/OU=NA/CN=/CN=PDAVIS1>, Slinger, Ryan </O=/OU=NA/CN=/CN=RSLINGER>
+X-bcc: 
+X-: \ExMerge - Meyers, Albert\Deleted Items
+X-: MEYERS-A
+X-: bert meyers 6-25-02.PST
+
+
+
+Start Date: 1/8/02; HourAhead hour: 3;  No ancillary schles awarded.  Variances detected.
+Variances detected in Load schle. 
+
+    LOG MESSAGES:
+
+PARSING FILE -->> O:\Portland\WestDesk\California Schling\ISO Final Schles\2002010803.txt
+
+---- Load Schle ----
+$$$ Variance found in table tblLoads.
+     Details: (Hour: 3 / Preferred: 119.37 / Final: 119.34)
+  TRANS_TYPE: FINAL
+  LOAD_ID: SDG1
+  MKT_TYPE: 2
+  TRANS_DATE: 1/8/02
+  SC_ID: ENRJ
+

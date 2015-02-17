@@ -1,0 +1,100 @@
+From @..  Sun Jan 18 19:46:41 2015
+Return-Path: <@..>
+X-Original-To: jezclark@fs.net
+Delivered-To: @..
+Received: by .. (, from userid 0)
+	id 5E63DD6; Sun, 18 Jan 2015 19:46:41 +0000 (UTC)
+Received: from mta9.mippahelp.com (mippahelp.com [192.96.206.55])
+    by .. with SMTP id 5v3ha7b2vmqhrsknzfh9fxs3j2;
+    for jezclark@fs.net;
+    Sun, 18 Jan 2015 19:46:41 +0000 (UTC)
+    (envelope-from assisted.living@mippahelp.com)
+Received-: Pass; receiver=..;
+    client-ip=192.96.206.55; envelope-from=<assisted.living@mippahelp.com>;
+    =mta9.mippahelp.com; mechanism=:192.96.206.55
+X-: version=0.8.3; receiver=..;
+    client-ip=192.96.206.55; client-port=52423;
+    syn-=:53:1:60:,S,T,N, Linux 2.4/2.6 <= 2.6.7;
+    -space; network-path=143.215.250.65 130.207.254.29 130.207.254.186
+    65.114.55.137 67.14.14.134 63.146.27.198 80.91.252.217 80.91.252.95
+    80.239.192.26 108.59.15.153 108.59.15.22; network-path-time=1421610401;
+    =..org (127.0.0.3)
+-Signature: a=-; q=dns; c=;
+  s=gamma; d=mippahelp.com;
+  h=To:Date:Message-Id:MIME-Version:To:From:Subject:Date:Content-type;
+  b=bF7SLh+3frLdt0kDmLwWqZS6IS6AP6G0HUF56yVAZjswiU0Qp4SE4UIe2Twq5tFgoyc2fkmWiW1/Xq88Zz1B7ZhLxhedjeL7Z5sgU1a2CcHzFE2YMBf5QIZ4cmzy8H;
+Date: Sun, 18 Jan 2015 20:46:25 00100
+To: <@..>
+Message-Id: <wxoor.difkk@mippahelp.com>
+MIME-Version: 1.0
+To: <@..>
+From: "Caring For A Parent" <@..>
+Subject: Find Assisted Living Costs Near You
+Date: 18 Jan 2015 20:46:25 +0100
+Content-type: text/html; charset="us-ascii"
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <table border='0' cellspacing='0' style='border: 1px solid #956c6a;' width='614'>
+      <tr>
+        <td>
+          <img border="0" alt='header' src='http://mippahelp.com/153jz49410j6'>
+        </td>
+      </tr>
+    </table>
+    <table width="616" cellspacing="0" border="0" style="border: 1px solid #956c6a; font-family: a;">
+      <tbody>
+        <tr>
+          <td bgcolor="#956C6A" style="font-size: 12px; font-family: a,Arial,sans-serif; padding: 10px; line-height: 1.6; border-top: 0px; border-bottom: 0px" colspan="2">
+            <p style="color: #FFFfff;">
+               
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="590" style="border-top: 1px solid (164, 184, 71); padding: 2 2 2; font-size: ; color: (0, 0, 0);">
+            <a href="http://mippahelp.com/155jz49410y6"></a>
+            <div align="center" width="500">
+              <span style="font-family: helvetica; font-size: ; color: #956c6a; font-weight: 500;">Find Assisted Living Costs Near You</span>
+            </div><br>
+            <div align="center">
+              <a href="http://mippahelp.com/155jz49410y6" style="text-decoration: none;"><img border="0" src="http://mippahelp.com/151jz49410h6" alt="Find Assisted Living near you, and discover helpful resources!" width="558" height="234"></a>
+            </div><br>
+            <div style="padding-left: 1;">
+              <span style="font-family: helvetica; font-size: ; color: #333;">You can speak to one of our skilled Family Advisors about your care concerns; we'll direct you to senior living options in your area, and it's totally free.<br>
+              <br>
+              We're here for you.</span>
+            </div><br>
+            <div align="center">
+              <a href="http://mippahelp.com/155jz49410y6" style="text-decoration: none;"><img border="0" src="http://mippahelp.com/152jz49410f6" width="350" height="49" alt="Find senior care options near you" style="background-color: #5AB433; color: #fff;"></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 12px; font-family: a; padding:  3; color: #fff;; border-top: 1px solid #956c6a;; background-color: #B9CCE2;">
+            <p>
+              This email was sent to you by "email affiliate" on behalf of Caringforaparent.com. If you no longer wish to receive e-mail from "email affiliate", please click to <a href="http://mippahelp.com/155jz49410y6">unsubscribe</a>.<br>
+              <br>
+              Furthermore, if do not wish to receive email from Caringforaparent.com, then please click to <a href="http://mippahelp.com/154jz49410d6">unsubscribe</a>.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+<div style="font:normal  Verdana, Geneva, sans-serif; color:#ffffff;">
+<p>" Mr. Gardiner, whose manners were easy and pleasant, encouraged her communicativeness by his questions and remarks; Mrs. Reynolds, either from pride or attachment, had evidently great pleasure in talking of her master and his sister. "Is your master much at Pemberley in the course of the year?" "Not so much as I could wish, Sir; but I dare say he may spend half his time here; and Miss Darcy is always down for the summer months." "Except," thought Elizabeth, "when she goes to Ramsgate." "If your master would marry, you might see more of him.""Yes, Sir; but I do not know when that will be. I do not know who is good enough for him." Mr. and Mrs. Gardiner smiled. Elizabeth could not help saying, "It is very much to his credit, I am sure, that you should think so." "I say no more than the truth, and what every body will say that knows him," replied the other. Elizabeth thought this was going pretty far; and she listened with increasing astonishment as the housekeeper added, "I have never had a cross word from him in my life, and I have known him ever since he was four years old." Mr. Gardiner, whose manners were easy and pleasant, encouraged her communicativeness by his questions and remarks; Mrs. Reynolds, either from pride or attachment, had evidently great pleasure in talking of her master and his sister. "Is your master much at Pemberley in the course of the year?" "Not so much as I could wish, Sir; but I dare say he may spend half his time here; and Miss Darcy is always down for the summer months." "Except," thought Elizabeth, "when she goes to Ramsgate." "If your master would marry, you might see more of him.""Yes, Sir; but I do not know when that will be. I do not know who is good enough for him." Mr. and Mrs. Gardiner smiled. Elizabeth could not help saying, "It is very much to his credit, I am sure, that you should think so." "I say no more than the truth, and what every body will say that knows him," replied the other. Elizabeth thought this was going pretty far; and she listened with increasing astonishment as the housekeeper added, "I have never had a cross word from him in my life, and I have known him ever since he was four years old." Mr. Gardiner, whose manners were easy and pleasant, encouraged her communicativeness by his questions and remarks; Mrs. Reynolds, either from pride or attachment, had evidently great pleasure in talking of her master and his sister. "Is your master much at Pemberley in the course of the year?" "Not so much as I could wish, Sir; but I dare say he may spend half his time here; and Miss Darcy is always down for the summer months." "Except," thought Elizabeth, "when she goes to Ramsgate." "If your master would marry, you might see more of him.""Yes, Sir; but I do not know when that will be. I do not know who is good enough for him." Mr. and Mrs. Gardiner smiled. Elizabeth could not help saying, "It is very much to his credit, I am sure, that you should think so." "I say no more than the truth, and what every body will say that knows him," replied the other. Elizabeth thought this was going pretty far; and she listened with increasing astonishment as the housekeeper added, "I have never had a cross word from him in my life, and I have known him ever since he was four years old." Mr. Gardiner, whose manners were easy and pleasant, encouraged her communicativeness by his questions and remarks; Mrs. Reynolds, either from pride or attachment, had evidently great pleasure in talking of her master and his sister. "Is your master much at Pemberley in the course of the year?" "Not so much as I could wish, Sir; but I dare say he may spend half his time here; and Miss Darcy is always down for the summer months." "Except," thought Elizabeth, "when she goes to Ramsgate." "If your master would marry, you might see more of him.""Yes, Sir; but I do not know when that will be. I do not know who is good enough for him." Mr. and Mrs. Gardiner smiled. Elizabeth could not help saying, "It is very much to his credit, I am sure, that you should think so." "I say no more than the truth, and what every body will say that knows him," replied the other. Elizabeth thought this was going pretty far; and she listened with increasing astonishment as the housekeeper added, "I have never had a cross word from him in my life, and I have known him ever since he was four years old.
+ 
+ 
+<img src="http://mippahelp.com/i/69jz49410c6" /></p>
+</div>
+</div>
+</body>
+</html><p align="left"><a href="http://mippahelp.com/?e=jezclark@fs.net">
+<img border="0" src="http://mippahelp.com/img/stake.jpg" width="370" height="191"></a></p>
+
