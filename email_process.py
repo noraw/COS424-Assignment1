@@ -61,6 +61,9 @@ def tokenize_corpus(path, train=True):
         for f in files:
             classes.append(dir)
             samples.append(f)
+
+            # this is getting all the word counts
+            #
             inf = open(path+'/'+dir+'/'+f,'r')
             raw = inf.read().decode('latin1') # or ascii or utf8 or utf16
             # remove noisy characters; tokenize
@@ -79,6 +82,14 @@ def tokenize_corpus(path, train=True):
                         words[t] = words[t]+1
                     except:
                         words[t] = 1
+
+            # getting the length of the email
+            tokens.append("emailLength")
+            
+
+
+
+            # adding all the tokens to doc
             docs.append(tokens)
     if train == True:
         return(docs, classes, samples, words)
@@ -147,9 +158,11 @@ def main(argv):
       word_count_threshold = 200
       vocab = wordcount_filter(words, num=word_count_threshold)
    else:
-      vocabfile = open(path+vocabf, 'r')
+      vocabfile = open(path+"/"+vocabf, 'r')
       vocab = [line.rstrip('\n') for line in vocabfile]
       vocabfile.close()
+      print "Test"
+      print vocab
       (docs, classes, samples) = tokenize_corpus(path, train=False)
 
    bow = find_wordcounts(docs, vocab)
