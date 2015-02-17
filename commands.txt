@@ -2,14 +2,14 @@ Commands to run:
 
 Debugging:
 
-Test:
+Train:
 python email_length.py -p testData/Train -o train_emails_length
 python email_process.py -p testData/Train -o train_emails_words
 
 
 
 
-Train:
+Test:
 python email_length.py -p testData/Test -o test_emails_length
 python email_process.py -p testData/Test -o test_emails -v train_emails_words_vocab_200.txt
 
@@ -21,4 +21,6 @@ Combine files:
 python combine_features.py -p testData/Train -n 'train_emails_words_vocab_200.txt train_emails_length_vocab.txt' -m 'train_emails_words_bag_of_words_200.dat train_emails_length_matrix.dat' -e 80
 
 
+Counting Samples:
+ls testData/Train/NotSpam/ -1 | wc -l 
 
