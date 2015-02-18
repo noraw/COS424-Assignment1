@@ -78,8 +78,8 @@ def main(argv):
     outfile.write("\n".join(deletedFeatureArray))
     outfile.close()
 
-    featureMatrixTrain_selected.tofile("featureTrain_selected_matrix_.dat")
-    featureMatrixTest_selected.tofile("featureTest_selected_matrix_.dat")
+    featureMatrixTrain_selected.tofile("featureTrain_selected_matrix.dat")
+    featureMatrixTest_selected.tofile("featureTest_selected_matrix.dat")
 
 
 
