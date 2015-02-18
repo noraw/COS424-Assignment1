@@ -158,11 +158,9 @@ def main(argv):
       word_count_threshold = 200
       vocab = wordcount_filter(words, num=word_count_threshold)
    else:
-      vocabfile = open(path+"/"+vocabf, 'r')
-      vocab = [line.rstrip('\n') for line in vocabfile]
+      vocabfile = codecs.open(path+"/"+vocabf, 'r',"utf-8-sig")
+      vocab = [str(line.rstrip('\n')) for line in vocabfile]
       vocabfile.close()
-      print "Test"
-      print vocab
       (docs, classes, samples) = tokenize_corpus(path, train=False)
 
    bow = find_wordcounts(docs, vocab)
