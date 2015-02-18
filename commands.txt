@@ -24,3 +24,8 @@ python combine_features.py -p testData/Train -n 'train_emails_words_vocab_200.tx
 Counting Samples:
 ls testData/Train/NotSpam/ -1 | wc -l 
 
+Classification:
+python classify.py -h // shows the possible flags used to select a classifier.
+		      // must modify file names if you don’t want to use whole
+		      // test and training sets.
+
