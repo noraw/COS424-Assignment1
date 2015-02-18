@@ -72,7 +72,7 @@ def main(argv):
     outfile.write("\n".join(featureArray))
     outfile.close()
     #write to binary file for large data set
-    featureMatrix.tofile(path+"/combine_features_matrix_.dat")
+    featureMatrix.tofile(path+"/combine_features_matrix.dat")
 
 
 

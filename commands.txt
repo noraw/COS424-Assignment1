@@ -2,30 +2,29 @@ Commands to run:
 
 Debugging:
 
-Train:
+TRAIN:
 python email_length.py -p testData/Train -o train_emails_length
 python email_process.py -p testData/Train -o train_emails_words
+python email_links.py -p testData/Train -o train_emails_links
 
 
 
-
-Test:
+TEST:
 python email_length.py -p testData/Test -o test_emails_length
 python email_process.py -p testData/Test -o test_emails -v train_emails_words_vocab_200.txt
+python email_links.py -p testData/Test -o test_emails_links
 
 
 
 
-
-Combine files:
+COMBINE FILES:
 python combine_features.py -p testData/Train -n 'train_emails_words_vocab_200.txt train_emails_length_vocab.txt' -m 'train_emails_words_bag_of_words_200.dat train_emails_length_matrix.dat' -e 80
 
+python combine_features.py -p testData/Test -n 'train_emails_words_vocab_200.txt test_emails_length_vocab.txt' -m 'test_emails_bag_of_words_0.dat test_emails_length_matrix.dat' -e 80
 
-Counting Samples:
+COUNTING SAMPLES:
 ls testData/Train/NotSpam/ -1 | wc -l 
 
-Classification:
-python classify.py -h // shows the possible flags used to select a classifier.
-		      // must modify file names if you don’t want to use whole
-		      // test and training sets.
 
+FEATURE SELECTION:
+python feature_selection.py -f testData/Train/combine_features_nameArray.txt -m testData/Train/combine_features_matrix.dat -t testData/Test/combine_features_matrix.dat -e 80

@@ -4,9 +4,9 @@ features given
 additional features
   bigrams - word pairs (1) - Ruth
   sender, email address IP address (sender's top level domain (ending)) (4) - Nora
-  length (2) - Nora
+  length (2) - Nora - DONE
   punctuation (5) - Ruth
-  URL - file type & count (3) - Nora
+  URL - file type & count (3) - Nora - DONE
 
 feature selection
   low variance
