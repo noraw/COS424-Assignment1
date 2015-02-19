@@ -22,13 +22,14 @@ def read_array_name_file(myfile):
 
 
 def main(argv):
+    path = ''
     featuresFile = ''
     matrixFileTrain = ''
     matrixFileTest = ''
     numEmails = ''
 
     try:
-      opts, args = getopt.getopt(argv,"f:m:t:e", ["features=", "matrix=","test=", "number_of_emails="])
+      opts, args = getopt.getopt(argv,"p:f:m:t:e", ["path=", "features=", "matrix=","test=", "number_of_emails="])
     except getopt.GetoptError:
       print 'ERROR:   python feature_selection.py -p <path> -f <inputfile> -m <inputfile> -t <matrixTest> -e <numberOfEmails>'
       sys.exit(2)
@@ -36,8 +37,10 @@ def main(argv):
     numEmails = int(args[0])
     for opt, arg in opts:
       if opt == '-h':
-         print 'HELP:   feature_selection.py -f <inputfile> -m <matrixTrain> -t <matrixTest> -e <numberOfEmails>'
+         print 'HELP:   feature_selection.py -p <path> -f <inputfile> -m <matrixTrain> -t <matrixTest> -e <numberOfEmails>'
          sys.exit()
+      elif opt in ("-p", "--path"):
+         path = arg
       elif opt in ("-f", "--features"):
          featuresFile = arg
       elif opt in ("-m", "--matrix"):
@@ -70,16 +73,16 @@ def main(argv):
             selectedFeatureArray.append(featureArray[i])
 
 
-    outfile= codecs.open("selected_features_nameArray.txt", 'w',"utf-8-sig")
+    outfile= codecs.open(path+"/features_selected_nameArray.txt", 'w',"utf-8-sig")
     outfile.write("\n".join(selectedFeatureArray))
     outfile.close()
 
-    outfile= codecs.open("deleted_features_nameArray.txt", 'w',"utf-8-sig")
+    outfile= codecs.open(path+"/features_deleted_nameArray.txt", 'w',"utf-8-sig")
     outfile.write("\n".join(deletedFeatureArray))
     outfile.close()
 
-    featureMatrixTrain_selected.tofile("featureTrain_selected_matrix.dat")
-    featureMatrixTest_selected.tofile("featureTest_selected_matrix.dat")
+    featureMatrixTrain_selected.tofile(path+"/featureTrain_selected_matrix.dat")
+    featureMatrixTest_selected.tofile(path+"/featureTest_selected_matrix.dat")
 
 
 

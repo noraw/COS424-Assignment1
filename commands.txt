@@ -12,15 +12,15 @@ python email_links.py -p testData/Train -o train_emails_links
 TEST:
 python email_length.py -p testData/Test -o test_emails_length
 python email_process.py -p testData/Test -o test_emails -v train_emails_words_vocab_200.txt
-python email_links.py -p testData/Test -o test_emails_links
+python email_links.py -p testData/Test -o test_emails_links -v train_emails_links_vocab.txt
 
 
 
 
 COMBINE FILES:
-python combine_features.py -p testData/Train -n 'train_emails_words_vocab_200.txt train_emails_length_vocab.txt' -m 'train_emails_words_bag_of_words_200.dat train_emails_length_matrix.dat' -e 80
+python combine_features.py -p testData/Train -n 'train_emails_words_vocab_200.txt train_emails_length_vocab.txt train_emails_links_vocab.txt' -m 'train_emails_words_bag_of_words_200.dat train_emails_length_matrix.dat train_emails_links_matrix.dat' -e 80
 
-python combine_features.py -p testData/Test -n 'train_emails_words_vocab_200.txt test_emails_length_vocab.txt' -m 'test_emails_bag_of_words_0.dat test_emails_length_matrix.dat' -e 80
+python combine_features.py -p testData/Test -n 'train_emails_words_vocab_200.txt test_emails_length_vocab.txt train_emails_links_vocab.txt' -m 'test_emails_bag_of_words_0.dat test_emails_length_matrix.dat test_emails_links_matrix.dat' -e 80
 
 COUNTING SAMPLES:
 ls testData/Train/NotSpam/ -1 | wc -l 
@@ -33,6 +33,6 @@ python classify.py -h // shows the possible flags used to select a classifier.
 
 
 FEATURE SELECTION:
-python feature_selection.py -f testData/Train/combine_features_nameArray.txt -m testData/Train/combine_features_matrix.dat -t testData/Test/combine_features_matrix.dat -e 80
+python feature_selection.py -p testData -f testData/Train/combine_features_nameArray.txt -m testData/Train/combine_features_matrix.dat -t testData/Test/combine_features_matrix.dat -e 80
 
 

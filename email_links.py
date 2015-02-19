@@ -126,16 +126,25 @@ def main(argv):
 	 
    print 'Path is "', path
    print 'Output file name is "', outputf
-   (docs, classes, samples, uniqueLinks) = get_email_links(path, train=True)
+   print 'vocabulary file is "', vocabf
+   if (not vocabf):
+      (docs, classes, samples, uniqueLinks) = get_email_links(path, train=True)
+   else:
+      (docs, classes, samples, uniqueLinks) = get_email_links(path, train=False)
+      vocabfile = codecs.open(path+"/"+vocabf, 'r',"utf-8-sig")
+      uniqueLinks = [str(line.rstrip('\n')) for line in vocabfile]
+      vocabfile.close()
+
 
    bow = find_emailLinksMatrix(docs, uniqueLinks)
    #write to binary file for large data set
    bow.tofile(path+"/"+outputf+"_matrix.dat")
 
-   # print out files
-   outfile= codecs.open(path+"/"+outputf+"_vocab.txt", 'w',"utf-8-sig")
-   outfile.write("\n".join(uniqueLinks))
-   outfile.close()
+   if (not vocabf):
+       # print out files
+       outfile= codecs.open(path+"/"+outputf+"_vocab.txt", 'w',"utf-8-sig")
+       outfile.write("\n".join(uniqueLinks))
+       outfile.close()
 
    #write to text file for small data set
    #bow.tofile(path+"/"+outputf+"_bag_of_words_"+str(word_count_threshold)+".txt", sep=",", format="%s")

@@ -20,3 +20,11 @@ tr
 width
 x
 length
+org
+gif
+ly
+com
+net
+html
+uk
+in
