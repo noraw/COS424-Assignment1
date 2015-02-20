@@ -41,6 +41,12 @@ X_test = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat",
 y = np.loadtxt(fname=open("trec07p_data/Train/train_emails_classes_200.txt"), dtype=str)
 y_test = np.loadtxt(fname=open("trec07p_data/Test/test_emails_classes_0.txt"), dtype=str)
 
+
+#X = read_bagofwords_dat("testData/featureTrain_selected_matrix.dat", 80)
+#X_test = read_bagofwords_dat("testData/featureTest_selected_matrix.dat", 80)
+#y = np.loadtxt(fname=open("testData/Train/train_emails_words_classes_200.txt"), dtype=str)
+#y_test = np.loadtxt(fname=open("testData/Test/test_emails_classes_0.txt"), dtype=str)
+
 outname = ""
 # CLASSIFY!
 if args.MultinomialNB:
