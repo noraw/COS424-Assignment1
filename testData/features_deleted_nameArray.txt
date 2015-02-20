@@ -22,3 +22,6 @@ ro
 br
 as
 al
+com
+net
+ca

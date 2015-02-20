@@ -52,3 +52,6 @@ br
 in
 as
 al
+com
+net
+ca

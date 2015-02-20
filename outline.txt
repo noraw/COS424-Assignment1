@@ -3,13 +3,13 @@ features given
 
 additional features
   bigrams - word pairs (1) - Ruth
-  sender, email address IP address (sender's top level domain (ending)) (4) - Nora
+  sender, email address IP address (sender's top level domain (ending)) (4) - Nora - DONE
   length (2) - Nora - DONE
   punctuation (5) - Ruth
   URL - file type & count (3) - Nora - DONE
 
 feature selection
-  low variance
+  low variance - DONE?
 
 classifiers: http://scikit-learn.org/stable/
   naive bayes - Ruth
