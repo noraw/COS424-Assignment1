@@ -18,6 +18,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.feature_selection import VarianceThreshold
 from sklearn.feature_extraction.text import TfidfTransformer
+import timeit
 
 
 # read a bag of words file back into python. The number and order
@@ -52,13 +53,16 @@ args = parser.parse_args()
 
 
 # data.
+use_bigrams = False;
+
 X_words = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_words_200.dat", 45000)
 X_test_words = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat", 5000)
 print "words read in."
 
-X_bigrams = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_bigrams_50.dat", 45000)
-X_test_bigrams = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_bigrams_0.dat", 5000)
-print "bigrams read in."
+if use_bigrams:
+    X_bigrams = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_bigrams_50.dat", 45000)
+    X_test_bigrams = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_bigrams_0.dat", 5000)
+    print "bigrams read in."
 
 # normalize counts using tf-idf
 print "begin normalization step."
@@ -70,10 +74,10 @@ X_test = transformer.fit_transform(X_test_words).toarray()
 print X.shape;
 
 # adding normalized bigrams to feature space
-X = np.concatenate((X, transformer.fit_transform(X_bigrams).toarray()), axis=1)
-X_test = np.concatenate((X_test, transformer.fit_transform(X_test_bigrams).toarray()), axis=1)
-
-print X.shape;
+if use_bigrams:
+    X = np.concatenate((X, transformer.fit_transform(X_bigrams).toarray()), axis=1)
+    X_test = np.concatenate((X_test, transformer.fit_transform(X_test_bigrams).toarray()), axis=1)
+    print X.shape;
 
 print "finished normalization step."
 
@@ -129,12 +133,15 @@ if args.NN:
         clf = KNeighborsClassifier(n_neighbors=3);
 
 if args.MultinomialNB or args.BernoulliNB or args.SVM or args.NN:
+    start = timeit.default_timer()
     clf.fit(X, y)
     predicted = clf.predict(X_test)
-    probs_train = clf.predict_proba(X)
+    #probs_train = clf.predict_proba(X)    
     probs_test = clf.predict_proba(X_test)
     print "Accuracy: " + str(clf.score(X_test, y_test)) # classifier accuracy
     print(metrics.classification_report(y_test, predicted))
+    stop = timeit.default_timer()
+    print " runtime: " + str(stop - start)
 
     # output scores for ROC curve
     outfile = file("predictions_" + outname + ".txt", "w")
