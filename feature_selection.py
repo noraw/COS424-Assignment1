@@ -1,7 +1,7 @@
 from os.path import isfile, isdir, join
 import numpy
 from sklearn.feature_selection import VarianceThreshold
-	
+
 import sys
 import getopt
 import codecs
@@ -15,29 +15,31 @@ def read_matrix_dat_file(myfile, numofemails=10000):
     return matrix
 
 def read_array_name_file(myfile):
-    arrayfile = codecs.open(myfile, 'r',"utf-8-sig")
-    array = [str(line.rstrip('\n')) for line in arrayfile]
-    arrayfile.close()
-    return array
+	arrayfile = codecs.open(myfile, encoding="utf-8-sig").read()
+	array = numpy.frombuffer(arrayfile.replace("\n", ""), dtype="<U2")
+	#array = [str(line.rstrip('\n')) for line in arrayfile]
+	return array
 
 
 def main(argv):
+    print argv;
     path = ''
     featuresFile = ''
     matrixFileTrain = ''
     matrixFileTest = ''
     numEmails = ''
+    numEmails2 = ''
 
     try:
-      opts, args = getopt.getopt(argv,"p:f:m:t:e", ["path=", "features=", "matrix=","test=", "number_of_emails="])
+      opts, args = getopt.getopt(argv,"p:f:m:t:e:g", ["path=", "features=", "matrix=","test=", "number_of_emails=", "number_of_emails2="])
     except getopt.GetoptError:
-      print 'ERROR:   python feature_selection.py -p <path> -f <inputfile> -m <inputfile> -t <matrixTest> -e <numberOfEmails>'
+      print 'ERROR:   python feature_selection.py -p <path> -f <inputfile> -m <inputfile> -t <matrixTest> -e <numberOfEmailsTrain> -g <numberOfEmailsTest>'
       sys.exit(2)
 
-    numEmails = int(args[0])
+    numEmails2 = int(args[0])
     for opt, arg in opts:
       if opt == '-h':
-         print 'HELP:   feature_selection.py -p <path> -f <inputfile> -m <matrixTrain> -t <matrixTest> -e <numberOfEmails>'
+         print 'HELP:   feature_selection.py -p <path> -f <vocabfile> -m <matrixTrain> -t <matrixTest> -e <numberOfEmailsTrain> -g <numberOfEmailsTest>'
          sys.exit()
       elif opt in ("-p", "--path"):
          path = arg
@@ -47,12 +49,15 @@ def main(argv):
          matrixFileTrain = arg
       elif opt in ("-t", "--test"):
          matrixFileTest = arg
-     
-    featureArray = read_array_name_file(featuresFile)
-    featureMatrixTrain = read_matrix_dat_file(matrixFileTrain, numofemails=numEmails)
-    featureMatrixTest = read_matrix_dat_file(matrixFileTest, numofemails=numEmails)
+      elif opt in ("-e", "--number_of_emails"):
+         numEmails = arg
 
-	 
+
+    featureArray = read_array_name_file(featuresFile)
+    featureMatrixTrain = read_matrix_dat_file(matrixFileTrain, numofemails=int(numEmails))
+    featureMatrixTest = read_matrix_dat_file(matrixFileTest, numofemails=int(numEmails2))
+
+
     selector = VarianceThreshold(threshold=1.0)
     selector.fit(featureMatrixTrain)
 
@@ -96,4 +101,3 @@ def main(argv):
 
 if __name__ == "__main__":
    main(sys.argv[1:])
-

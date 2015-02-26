@@ -8,11 +8,16 @@
 # ********************************************
 import numpy as np
 import argparse
+import os
+import subprocess
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.naive_bayes import BernoulliNB
-from sklearn.svm import SVC
+from sklearn import svm
 from sklearn import metrics
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.feature_selection import VarianceThreshold
+from sklearn.feature_extraction.text import TfidfTransformer
 
 
 # read a bag of words file back into python. The number and order
@@ -30,41 +35,79 @@ parser.add_argument("-M", "--MultinomialNB", action="store_true", help="run naiv
 parser.add_argument("-B", "--BernoulliNB", action="store_true", help="run naive bayes with bernoulli model")
 parser.add_argument("-S", "--SVM", action="store_true", help="run SVM")
 parser.add_argument("-N", "--NN", action="store_true", help="run nearest neighbor")
+parser.add_argument("-s", "--selection", action="store_true", help="apply feature selection")
+parser.add_argument("-V", "--var", type=float, nargs=1, help="variance threshold")
 #parser.add_argument('-f', help="training features" type=str)
 
 args = parser.parse_args()
 
 
+
+# feature selection
+# print "feature selection started."
+# print subprocess.Popen("python feature_selection.py -p trec07p_data -f trec07p_data/Train/train_emails_vocab_200.txt -m trec07p_data/Train/train_emails_bag_of_words_200.dat -t trec07p_data/Test/test_emails_bag_of_words_0.dat -e 45000 -g 5000", shell=True, stdout=subprocess.PIPE).stdout.read();
+# print "feature selection finished."
+# X = read_bagofwords_dat("trec07p_data/featureTrain_selected_matrix.dat", 45000)
+# X_test = read_bagofwords_dat("trec07p_data/featureTest_selected_matrix.dat", 5000)
+
+
 # data.
 X = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_words_200.dat", 45000)
 X_test = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat", 5000)
+
+# normalize counts using tf-idf
+print "begin normalization step."
+
+transformer = TfidfTransformer()
+X = transformer.fit_transform(X).toarray()
+X_test = transformer.fit_transform(X_test).toarray()
+
+print "finished normalization step."
+
+# # combine other features.
+# # use DictVectorizer to transform other features e.g. email length
+# from sklearn.feature_extraction import DictVectorizer
+# dictvect = DictVectorizers(sparse=False)
+# D = [{'foo': 1, 'bar': 2}, {'foo': 3, 'baz': 1}]
+# test = dictvect.fit_transform(D)
+# FeatureUnion ()
+
+
 y = np.loadtxt(fname=open("trec07p_data/Train/train_emails_classes_200.txt"), dtype=str)
 y_test = np.loadtxt(fname=open("trec07p_data/Test/test_emails_classes_0.txt"), dtype=str)
 
-
-#X = read_bagofwords_dat("testData/featureTrain_selected_matrix.dat", 80)
-#X_test = read_bagofwords_dat("testData/featureTest_selected_matrix.dat", 80)
-#y = np.loadtxt(fname=open("testData/Train/train_emails_words_classes_200.txt"), dtype=str)
-#y_test = np.loadtxt(fname=open("testData/Test/test_emails_classes_0.txt"), dtype=str)
-
 outname = ""
+if args.selection:
+    thresh = args.var[0];
+    print "Variance Feature Selection Threshold: " + str(args.var[0]);
+
 # CLASSIFY!
 if args.MultinomialNB:
     print "Multinomial NB"
     outname = "mNB"
-    clf = MultinomialNB();
+    if args.selection:
+        clf = Pipeline([('feature_selection', VarianceThreshold(threshold=thresh)),('classification', MultinomialNB())])
+    else:
+        clf = MultinomialNB();
     MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True) # use defaults
 
 if args.BernoulliNB:
     print "Bernoulli NB"
     outname = "bNB"
-    clf = BernoulliNB()
+    if args.selection:
+        clf = Pipeline([('feature_selection', VarianceThreshold(threshold=thresh)),('classification', BernoulliNB())])
+    else:
+        clf = BernoulliNB()
     BernoulliNB(alpha=1.0, binarize=0.0, class_prior=None, fit_prior=True) # use defaults
 
 if args.SVM:
     print "SVM"
     outname = "SVM"
-    clf = svm.SVC(kernel='rbf', C=1.0)
+    if args.selection:
+        clf = Pipeline([('feature_selection', VarianceThreshold(threshold=thresh)),('classification', svm.SVC(verbose=True, probability=True))])
+    else:
+        clf = svm.SVC(verbose=True, probability=True)
+    #clf = svm.SVC(kernel='rbf', C=1.0)
 #    SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,
 #    gamma=0.0, kernel='rbf', max_iter=-1, probability=False,
 #    random_state=None, shrinking=True, tol=0.001, verbose=False) # use defaults
@@ -72,7 +115,10 @@ if args.SVM:
 if args.NN:
     print "NN"
     outname ="NN"
-    clf = KNeighborsClassifier(n_neighbors=3);
+    if args.selection:
+        clf = Pipeline([('feature_selection', VarianceThreshold(threshold=thresh)),('classification', KNeighborsClassifier(n_neighbors=3))])
+    else:
+        clf = KNeighborsClassifier(n_neighbors=3);
 
 if args.MultinomialNB or args.BernoulliNB or args.SVM or args.NN:
     clf.fit(X, y)
