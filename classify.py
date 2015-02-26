@@ -52,25 +52,33 @@ args = parser.parse_args()
 
 
 # data.
-X = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_words_200.dat", 45000)
-X_test = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat", 5000)
+X_words = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_words_200.dat", 45000)
+X_test_words = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat", 5000)
+print "words read in."
+
+X_bigrams = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_bigrams_50.dat", 45000)
+X_test_bigrams = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_bigrams_0.dat", 5000)
+print "bigrams read in."
 
 # normalize counts using tf-idf
 print "begin normalization step."
 
 transformer = TfidfTransformer()
-X = transformer.fit_transform(X).toarray()
-X_test = transformer.fit_transform(X_test).toarray()
+X = transformer.fit_transform(X_words).toarray()
+X_test = transformer.fit_transform(X_test_words).toarray()
+
+print X.shape;
+
+# adding normalized bigrams to feature space
+X = np.concatenate((X, transformer.fit_transform(X_bigrams).toarray()), axis=1)
+X_test = np.concatenate((X_test, transformer.fit_transform(X_test_bigrams).toarray()), axis=1)
+
+print X.shape;
 
 print "finished normalization step."
 
-# # combine other features.
-# # use DictVectorizer to transform other features e.g. email length
-# from sklearn.feature_extraction import DictVectorizer
-# dictvect = DictVectorizers(sparse=False)
-# D = [{'foo': 1, 'bar': 2}, {'foo': 3, 'baz': 1}]
-# test = dictvect.fit_transform(D)
-# FeatureUnion ()
+# combine other features.
+# To Do: JUST read them in and CONCAT them to the array!
 
 
 y = np.loadtxt(fname=open("trec07p_data/Train/train_emails_classes_200.txt"), dtype=str)
