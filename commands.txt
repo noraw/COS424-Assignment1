@@ -9,7 +9,7 @@ python email_links.py -p testData/Train -o train_emails_links
 python email_sender.py -p testData/Train -o train_emails_sender
 
 python build_bigram_feature.py -p trec07p_data/Train -o train_emails
-python build_bigram_feature.py -p trec07p_data/Test -o test_emails -v  train_emails_words_bigram_vocab_50.txt 
+python build_bigram_feature.py -p trec07p_data/Test -o test_emails -v  /train_emails_bigram_vocab_50.txt
 
 
 
