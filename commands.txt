@@ -41,3 +41,10 @@ FEATURE SELECTION:
 python feature_selection.py -p testData -f testData/Train/combine_features_nameArray.txt -m testData/Train/combine_features_matrix.dat -t testData/Test/combine_features_matrix.dat -e 80
 
 
+
+
+
+
+
+
+

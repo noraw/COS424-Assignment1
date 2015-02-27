@@ -1,0 +1,40 @@
+noraw@Pinky:~/COS424/COS424-Assignment1$ python email_length.py -p trec07p_data/Test -o test_emails_length
+Path is " trec07p_data/Test
+Output file name is " test_emails_length
+Finished find_emailLengthsMatrix for : 5000  docs
+Time: 4.3062069416
+noraw@Pinky:~/COS424/COS424-Assignment1$ python email_links.py -p trec07p_data/Test -o test_emails_links
+Path is " trec07p_data/Test
+Output file name is " test_emails_links
+vocabulary file is " 
+Finished find_wordcounts for : 5000  docs
+Time: 11.9227538109
+noraw@Pinky:~/COS424/COS424-Assignment1$ python email_sender.py -p trec07p_data/Test -o test_emails_sender
+Path is " trec07p_data/Test
+Output file name is " test_emails_sender
+vocabulary file is " 
+Finished find_emailSenderMatrix for : 5000  docs
+Time: 0.240536928177
+
+
+
+
+
+noraw@Pinky:~/COS424/COS424-Assignment1$ python email_length.py -p trec07p_data/Train -o train_emails_length
+Path is " trec07p_data/Train
+Output file name is " train_emails_length
+Finished find_emailLengthsMatrix for : 45000  docs
+Time: 35.384526968
+noraw@Pinky:~/COS424/COS424-Assignment1$ python email_links.py -p trec07p_data/Train -o train_emails_links
+Path is " trec07p_data/Train
+Output file name is " train_emails_links
+vocabulary file is " 
+Finished find_wordcounts for : 45000  docs
+Time: 107.349458933
+noraw@Pinky:~/COS424/COS424-Assignment1$ python email_sender.py -p trec07p_data/Train -o train_emails_sender
+Path is " trec07p_data/Train
+Output file name is " train_emails_sender
+vocabulary file is " 
+Finished find_emailSenderMatrix for : 45000  docs
+Time: 2.23011302948
+

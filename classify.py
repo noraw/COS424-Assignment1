@@ -38,6 +38,7 @@ parser.add_argument("-S", "--SVM", action="store_true", help="run SVM")
 parser.add_argument("-N", "--NN", action="store_true", help="run nearest neighbor")
 parser.add_argument("-s", "--selection", action="store_true", help="apply feature selection")
 parser.add_argument("-V", "--var", type=float, nargs=1, help="variance threshold")
+parser.add_argument("-c", "--combine", action="store_true", help="combine matrix files")
 #parser.add_argument('-f', help="training features" type=str)
 
 args = parser.parse_args()
@@ -51,38 +52,69 @@ args = parser.parse_args()
 # X = read_bagofwords_dat("trec07p_data/featureTrain_selected_matrix.dat", 45000)
 # X_test = read_bagofwords_dat("trec07p_data/featureTest_selected_matrix.dat", 5000)
 
+if args.combine:
+    # data.
+    use_bigrams = False;
 
-# data.
-use_bigrams = False;
+    X_words = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_words_200.dat", 45000)
+    X_test_words = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat", 5000)
+    print "words read in."
 
-X_words = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_words_200.dat", 45000)
-X_test_words = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat", 5000)
-print "words read in."
+    if use_bigrams:
+        X_bigrams = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_bigrams_50.dat", 45000)
+        X_test_bigrams = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_bigrams_0.dat", 5000)
+        print "bigrams read in."
 
-if use_bigrams:
-    X_bigrams = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_bigrams_50.dat", 45000)
-    X_test_bigrams = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_bigrams_0.dat", 5000)
-    print "bigrams read in."
+    # normalize counts using tf-idf
+    print "begin normalization step."
 
-# normalize counts using tf-idf
-print "begin normalization step."
+    transformer = TfidfTransformer()
+    X = transformer.fit_transform(X_words).toarray()
+    X_test = transformer.fit_transform(X_test_words).toarray()
 
-transformer = TfidfTransformer()
-X = transformer.fit_transform(X_words).toarray()
-X_test = transformer.fit_transform(X_test_words).toarray()
-
-print X.shape;
-
-# adding normalized bigrams to feature space
-if use_bigrams:
-    X = np.concatenate((X, transformer.fit_transform(X_bigrams).toarray()), axis=1)
-    X_test = np.concatenate((X_test, transformer.fit_transform(X_test_bigrams).toarray()), axis=1)
     print X.shape;
 
-print "finished normalization step."
+    # adding normalized bigrams to feature space
+    if use_bigrams:
+        X = np.concatenate((X, transformer.fit_transform(X_bigrams).toarray()), axis=1)
+        X_test = np.concatenate((X_test, transformer.fit_transform(X_test_bigrams).toarray()), axis=1)
+        print X.shape;
 
-# combine other features.
-# To Do: JUST read them in and CONCAT them to the array!
+    print "finished normalization step."
+
+    # combine other features.
+    # To Do: JUST read them in and CONCAT them to the array!
+
+    X_length = read_bagofwords_dat("trec07p_data/Train/train_emails_length_matrix.dat", 45000)
+    X_test_length = read_bagofwords_dat("trec07p_data/Test/test_emails_length_matrix.dat", 5000)
+
+    X_links = read_bagofwords_dat("trec07p_data/Train/train_emails_links_matrix.dat", 45000)
+    X_test_links = read_bagofwords_dat("trec07p_data/Test/test_emails_links_matrix.dat", 5000)
+
+    X_sender = read_bagofwords_dat("trec07p_data/Train/train_emails_sender_matrix.dat", 45000)
+    X_test_sender = read_bagofwords_dat("trec07p_data/Test/test_emails_sender_matrix.dat", 5000)
+
+    print "X concatenate"
+    print "length"
+    X = np.concatenate((X, X_length), axis=1)
+    print "links"
+    X = np.concatenate((X, X_links), axis=1)
+    print "sender"
+    X = np.concatenate((X, X_sender), axis=1)
+    print "X_test concatenate"
+    print "length"
+    X_test = np.concatenate((X_test, X_test_length), axis=1)
+    print "links"
+    X_test = np.concatenate((X_test, X_test_links), axis=1)
+    print "sender"
+    X_test = np.concatenate((X_test, X_test_sender), axis=1)
+
+    X.tofile("trec07p_data/Train/combine_features_matrix.dat")
+    X_test.tofile("trec07p_data/Test/combine_features_matrix.dat")
+    print "Done"
+else:
+    X = read_bagofwords_dat("trec07p_data/Train/combine_features_matrix.dat", 45000)
+    X_test = read_bagofwords_dat("trec07p_data/Test/combine_features_matrix.dat", 5000)
 
 
 y = np.loadtxt(fname=open("trec07p_data/Train/train_emails_classes_200.txt"), dtype=str)
