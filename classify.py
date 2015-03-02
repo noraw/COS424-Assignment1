@@ -18,6 +18,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.feature_selection import VarianceThreshold
 from sklearn.feature_extraction.text import TfidfTransformer
+from scipy.sparse import hstack
 import timeit
 
 
@@ -80,8 +81,8 @@ if args.combine:
 
     # adding normalized bigrams to feature space
     if use_bigrams:
-        X = np.concatenate((X, transformer.fit_transform(X_bigrams).toarray()), axis=1)
-        X_test = np.concatenate((X_test, transformer.fit_transform(X_test_bigrams).toarray()), axis=1)
+        X = hstack([X, transformer.fit_transform(X_bigrams).toarray()])
+        X_test = hstack([X_test, transformer.fit_transform(X_test_bigrams).toarray()])
         print X.shape;
 
     print "finished normalization step."
@@ -100,18 +101,18 @@ if args.combine:
 
     print "X concatenate"
     print "length: " + str(X_length.shape)
-    X = np.concatenate((X, X_length), axis=1)
+    X = hstack([X, X_length])
     print "links: " + str(X_links.shape)
-    X = np.concatenate((X, X_links), axis=1)
+    X = hstack([X, X_links])
     print "sender: " + str(X_sender.shape)
-    X = np.concatenate((X, X_sender), axis=1)
+    X = hstack([X, X_sender])
     print "X_test concatenate"
     print "length: " + str(X_test_length.shape)
-    X_test = np.concatenate((X_test, X_test_length), axis=1)
+    X_test = hstack([X_test, X_test_length])
     print "links: " + str(X_test_links.shape)
-    X_test = np.concatenate((X_test, X_test_links), axis=1)
+    X_test = hstack([X_test, X_test_links])
     print "sender: " + str(X_test_sender.shape)
-    X_test = np.concatenate((X_test, X_test_sender), axis=1)
+    X_test = hstack([X_test, X_test_sender])
 
     X.tofile("trec07p_data/Train/combine_features_matrix.dat")
     X_test.tofile("trec07p_data/Test/combine_features_matrix.dat")
