@@ -44,6 +44,18 @@ python feature_selection.py -p testData -f testData/Train/combine_features_nameA
 
 
 
+Final commands:
+python email_length.py -p trec07p_data/Train -o train_emails_length
+python email_process.py -p trec07p_data/Train -o train_emails_words
+python email_links.py -p trec07p_data/Train -o train_emails_links
+python email_sender.py -p trec07p_data/Train -o train_emails_sender
+python build_bigram_feature.py -p trec07p_data/Train -o train_emails
+
+python email_length.py -p trec07p_data/Test -o test_emails_length
+python email_process.py -p trec07p_data/Test -o test_emails -v train_emails_words_vocab_200.txt
+python email_links.py -p trec07p_data/Test -o test_emails_links -v train_emails_links_vocab.txt
+python email_sender.py -p trec07p_data/Test -o test_emails_sender -v train_emails_sender_vocab.txt
+python build_bigram_feature.py -p trec07p_data/Test -o test_emails -v  /train_emails_bigram_vocab_50.txt
 
 
 

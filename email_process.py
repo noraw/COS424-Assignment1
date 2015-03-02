@@ -158,7 +158,7 @@ def main(argv):
       word_count_threshold = 200
       vocab = wordcount_filter(words, num=word_count_threshold)
    else:
-      vocabfile = codecs.open(path+"/"+vocabf, 'r',"utf-8-sig")
+      vocabfile = open(path+"/"+vocabf, 'r')
       vocab = [str(line.rstrip('\n')) for line in vocabfile]
       vocabfile.close()
       (docs, classes, samples) = tokenize_corpus(path, train=False)

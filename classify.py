@@ -59,11 +59,15 @@ if args.combine:
     X_words = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_words_200.dat", 45000)
     X_test_words = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_words_0.dat", 5000)
     print "words read in."
+    print "words: " + str(X_words.shape)
+    print "words_test: " + str(X_test_words.shape)
 
     if use_bigrams:
         X_bigrams = read_bagofwords_dat("trec07p_data/Train/train_emails_bag_of_bigrams_50.dat", 45000)
         X_test_bigrams = read_bagofwords_dat("trec07p_data/Test/test_emails_bag_of_bigrams_0.dat", 5000)
         print "bigrams read in."
+        print "bigrams: " + str(X_bigrams.shape)
+        print "bigrams_test: " + str(X_test_bigrams.shape)
 
     # normalize counts using tf-idf
     print "begin normalization step."
@@ -95,18 +99,18 @@ if args.combine:
     X_test_sender = read_bagofwords_dat("trec07p_data/Test/test_emails_sender_matrix.dat", 5000)
 
     print "X concatenate"
-    print "length"
+    print "length: " + str(X_length.shape)
     X = np.concatenate((X, X_length), axis=1)
-    print "links"
+    print "links: " + str(X_links.shape)
     X = np.concatenate((X, X_links), axis=1)
-    print "sender"
+    print "sender: " + str(X_sender.shape)
     X = np.concatenate((X, X_sender), axis=1)
     print "X_test concatenate"
-    print "length"
+    print "length: " + str(X_test_length.shape)
     X_test = np.concatenate((X_test, X_test_length), axis=1)
-    print "links"
+    print "links: " + str(X_test_links.shape)
     X_test = np.concatenate((X_test, X_test_links), axis=1)
-    print "sender"
+    print "sender: " + str(X_test_sender.shape)
     X_test = np.concatenate((X_test, X_test_sender), axis=1)
 
     X.tofile("trec07p_data/Train/combine_features_matrix.dat")
