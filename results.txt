@@ -1,0 +1,86 @@
+Bernoulli NB
+Accuracy: 0.9438
+             precision    recall  f1-score   support
+
+    NotSpam       0.90      1.00      0.95      2500
+       Spam       1.00      0.89      0.94      2500
+
+avg / total       0.95      0.94      0.94      5000
+
+ runtime: 20.6012070179
+
+
+
+
+Bernoulli NB - bigrams
+Accuracy: 0.9176
+             precision    recall  f1-score   support
+
+    NotSpam       0.91      0.93      0.92      2500
+       Spam       0.92      0.91      0.92      2500
+
+avg / total       0.92      0.92      0.92      5000
+
+ runtime: 0.252720117569
+
+
+Multinomial NB
+Accuracy: 0.953
+             precision    recall  f1-score   support
+
+    NotSpam       0.91      1.00      0.96      2500
+       Spam       1.00      0.91      0.95      2500
+
+avg / total       0.96      0.95      0.95      5000
+
+ runtime: 14.5719208717
+
+
+
+Multinomial NB - bigrams
+Accuracy: 0.8584
+             precision    recall  f1-score   support
+
+    NotSpam       0.91      0.80      0.85      2500
+       Spam       0.82      0.92      0.87      2500
+
+avg / total       0.86      0.86      0.86      5000
+
+ runtime: 0.215627908707
+
+
+
+NN
+Accuracy: 0.9918
+             precision    recall  f1-score   support
+
+    NotSpam       1.00      0.99      0.99      2500
+       Spam       0.99      1.00      0.99      2500
+
+avg / total       0.99      0.99      0.99      5000
+
+ runtime: 3710.63866496
+
+NN - bigrams
+predictions done.
+Accuracy: 0.9526
+             precision    recall  f1-score   support
+
+    NotSpam       0.95      0.96      0.95      2500
+       Spam       0.96      0.95      0.95      2500
+
+avg / total       0.95      0.95      0.95      5000
+
+ runtime: 101.522564173
+
+
+SVM
+Accuracy: 0.9976
+             precision    recall  f1-score   support
+
+    NotSpam       1.00      1.00      1.00      2500
+       Spam       1.00      1.00      1.00      2500
+
+avg / total       1.00      1.00      1.00      5000
+
+ runtime: 6649.28914309
