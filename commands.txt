@@ -40,6 +40,28 @@ python classify.py -h // shows the possible flags used to select a classifier.
 FEATURE SELECTION:
 python feature_selection.py -p testData -f testData/Train/combine_features_nameArray.txt -m testData/Train/combine_features_matrix.dat -t testData/Test/combine_features_matrix.dat -e 80
 
+CLUSTER SPECIFIC COMMANDS:
+qsub -cwd -N buildbigram200 python build_bigram_feature.py -p trec07p_data/Train -o train_emails
+qsub -cwd -N buildbigramTest python build_bigram_feature.py -p trec07p_data/Test -o test_emails -v  /train_emails_bigram_vocab_200.txt
+sub -cwd -N P1bigrams python build_bigram_feature.py -p P1Data/Train -o test_emails -v  /train_emails_bigram_vocab_200.txt
+qsub -cwd -o classify_out.txt -e classify_errors -N classify python classify.py -c
+qsub -cwd -o variance_out.txt -N variance python calc_feature_var.py
+qsub -cwd -o classify_outMNB.txt -N multinomalNB python classify.py -M -s -V 1
+qsub -cwd -o classify_outBNB.txt -N bernoulliNB python classify.py -B -s -V 1
+qsub -cwd -o classify_outSVM.txt -N SVM python classify.py -S -s -V 1
+qsub -cwd -o classify_outNN.txt -N NN python classify.py -N -s -V 1
+
+
+P1Data (orig) - use the training data as an additional test?
+——————
+wget http://isun.cs.princeton.edu/P1Data.tar.gz
+qsub -cwd -N bagofwordstrain python email_process.py -p P1Data/Train -o train_emails
+python email_sender.py -p P1Data/Train -o train_emails_sender
+python email_links.py -p P1Data/Train -o train_emails_links
+qsub -cwd -N lengthTrain python email_length.py -p P1Data/Train -o train_emails_length
+qsub -cwd -N bigramtrainP1 python build_bigram_feature.py -p P1Data/Train -o test_emails -v  /train_emails_bigram_vocab_200.txt
+qsub -cwd -N wordstrainP1 python email_process.py -p P1Data/Train -o test_emails -v  /train_emails_vocab_200.txt
+
 
 
 
@@ -57,6 +79,4 @@ python email_links.py -p trec07p_data/Test -o test_emails_links -v train_emails_
 python email_sender.py -p trec07p_data/Test -o test_emails_sender -v train_emails_sender_vocab.txt
 python build_bigram_feature.py -p trec07p_data/Test -o test_emails -v  /train_emails_bigram_vocab_50.txt
 
-
-
-
+python classify.py -M -s -V 1 // run multinomial NB with variance threshold of 1
