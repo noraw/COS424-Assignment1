@@ -1,3 +1,6 @@
+***************
+var = 1
+***************
 Bernoulli NB
 Accuracy: 0.9438
              precision    recall  f1-score   support
@@ -84,3 +87,111 @@ Accuracy: 0.9976
 avg / total       1.00      1.00      1.00      5000
 
  runtime: 6649.28914309
+
+***************
+var thresh = 400
+***************
+Multinomial NB
+predictions done.
+Accuracy: 0.9476
+             precision    recall  f1-score   support
+
+    NotSpam       0.91      1.00      0.95      2500
+       Spam       0.99      0.90      0.94      2500
+
+avg / total       0.95      0.95      0.95      5000
+
+ runtime: 14.8986299038
+
+
+Bernoulli NB
+predictions done.
+Accuracy: 0.9706
+             precision    recall  f1-score   support
+
+    NotSpam       0.95      0.99      0.97      2500
+       Spam       0.99      0.95      0.97      2500
+
+avg / total       0.97      0.97      0.97      5000
+
+ runtime: 18.478908062
+
+
+
+NN
+predictions done.
+Accuracy: 0.9932
+             precision    recall  f1-score   support
+
+    NotSpam       1.00      0.99      0.99      2500
+       Spam       0.99      1.00      0.99      2500
+
+avg / total       0.99      0.99      0.99      5000
+
+ runtime: 2950.96134996
+
+
+SVM
+Accuracy: 0.9974
+             precision    recall  f1-score   support
+
+    NotSpam       0.99      1.00      1.00      2500
+       Spam       1.00      0.99      1.00      2500
+
+avg / total       1.00      1.00      1.00      5000
+
+ runtime: 4147.29293394
+
+
+
+****************
+AUCs - Spam (var thresh = 1)
+****************
+multinomial NB 0.9546
+bernoulli NB 0.9951
+NN 0.9947
+SVM 1
+
+****************
+AUCs - Spam (var thresh = 400) SAME.
+****************
+multinomial NB 0.9546
+bernoulli NB 0.9951
+NN 0.9947
+SVM 1
+
+****************
+variance
+****************
+Bigrams - failed……
+———
+Total features: 21436
+Features with the highest variance:
+267.83106 sender_inf   
+45.59248  sender_cr   
+21433 239.19556  sender_PL   
+21434 241.98827  sender_ec   
+21435 235.62188  sender_gs   
+21436 231.70044  sender_tf  
+
+
+Words
+———
+Total features: 10553
+Features with the highest variance:
+7278.073        na
+7278.166    leader
+7284.327      000d
+7286.093 ryasq66dz
+7292.826      0008
+7674.761    deceiv
+
+lowest variance
+0.0000000  3d1
+0.0000000 amaz
+0.0000000 dies
+0.0000000  pol
+0.0000000   vh
+0.2645824    h
+
+feature var cutoff of 400 = 8099 removed features
